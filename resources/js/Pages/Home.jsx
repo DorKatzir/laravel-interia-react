@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react'
+import { Link, usePage } from '@inertiajs/react'
 import { useRoute } from '../../../vendor/tightenco/ziggy'
 
 
@@ -6,9 +6,18 @@ export default function Home({ posts }) {
 
     const route = useRoute()
 
+    const { flash } = usePage().props
+
+
     return (
         <>
             <h1 className="title">Posts</h1>
+
+            { flash.message &&
+                    <div className='absolute top-24 right-6 bg-rose-500 p-2 rounded-md shadow-lg text-sm text-white'>
+                        { flash.message }
+                    </div>}
+
             <div>
                 {
                     posts.data.map(post => (
