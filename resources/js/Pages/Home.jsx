@@ -1,5 +1,6 @@
 import { Link, usePage } from '@inertiajs/react'
 import { useRoute } from '../../../vendor/tightenco/ziggy'
+import { useState } from 'react'
 
 
 export default function Home({ posts }) {
@@ -8,14 +9,21 @@ export default function Home({ posts }) {
 
     const { flash } = usePage().props
 
+    const [ flashMsg, setFlashMsg ] = useState(flash.message)
+
+
+    setTimeout(() => {
+        setFlashMsg(null)
+    }, 2000);
+
 
     return (
         <>
             <h1 className="title">Posts</h1>
 
-            { flash.message &&
+            { flashMsg &&
                     <div className='absolute top-24 right-6 bg-rose-500 p-2 rounded-md shadow-lg text-sm text-white'>
-                        { flash.message }
+                        { flashMsg }
                     </div>}
 
             <div>
