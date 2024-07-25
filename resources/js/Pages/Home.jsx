@@ -1,10 +1,10 @@
-import { Link } from "@inertiajs/react";
+import { Link } from '@inertiajs/react'
+import { useRoute } from '../../../vendor/tightenco/ziggy'
+
 
 export default function Home({ posts }) {
 
-    // console.log(posts)
-    // console.log(posts.data)
-    // console.log(posts.links)
+    const route = useRoute()
 
     return (
         <>
@@ -21,7 +21,8 @@ export default function Home({ posts }) {
                                 <p className="font-medium">
                                     {post.body}
                                 </p>
-                                <Link href={`/posts/${post.id}`} className="text-link">Read more...</Link>
+                                {/* <Link href={`/posts/${post.id}`} className="text-link">Read more...</Link> */}
+                                <Link href={ route('posts.show', post) } className="text-link">Read more...</Link>
                         </div>
 
                     ))
