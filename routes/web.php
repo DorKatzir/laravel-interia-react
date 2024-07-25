@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 
 Route::get('/', [PostController::class, 'index']);
+
 Route::resource('/posts', PostController::class)->except('index');
 
 
