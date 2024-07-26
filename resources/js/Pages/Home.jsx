@@ -10,11 +10,13 @@ export default function Home({ posts }) {
     const { component } = usePage()
     const { flash } = usePage().props
 
-    const [ flashMsg, setFlashMsg ] = useState(flash.message)
+    const [ flashMsg, setFlashMsg ] = useState( flash.message )
+    const [ flasSucc, setFlashSucc ] = useState( flash.success )
 
 
     setTimeout(() => {
         setFlashMsg(null)
+        setFlashSucc(null)
     }, 2000);
 
 
@@ -25,10 +27,19 @@ export default function Home({ posts }) {
 
             <h1 className="title">Posts</h1>
 
+
             { flashMsg &&
                     <div className='absolute top-24 right-6 bg-rose-500 p-2 rounded-md shadow-lg text-sm text-white'>
                         { flashMsg }
-                    </div>}
+                    </div>
+            }
+
+            { flasSucc &&
+                    <div className='absolute top-24 right-6 bg-green-500 p-2 rounded-md shadow-lg text-sm text-white'>
+                        { flasSucc }
+                    </div>
+            }
+
 
             <div>
                 {

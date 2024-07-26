@@ -40,7 +40,7 @@ class PostController extends Controller
 
         Post::create($fields);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'New post created Successfully!');
 
     }
 
@@ -75,7 +75,7 @@ class PostController extends Controller
 
         $post->update($fields);
 
-        return redirect('/')->with('message', 'The post was updated Successfully!');
+        return redirect('/')->with('success', 'The post was updated Successfully!');
     }
 
     /**
